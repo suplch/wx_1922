@@ -1,0 +1,22 @@
+<view class="container">
+  <view class="title">
+    <text >商品列表</text>
+  </view>
+  
+
+  <view class="list">
+    <view class="item" wx:for="{{goods_list}}" wx:for-item="goods">
+      <view class="info">
+        <text>{{goods.name}}</text>
+        <text>{{goods.price}}</text>
+        <text>{{goods.pic}}</text>
+      </view>
+      <navigator class="nav" url="../detail/detail?goods_id={{ goods.id }}">详情</navigator>
+    </view>
+  </view>
+
+  <view class="footer">
+    合计: 
+  </view>
+
+</view>

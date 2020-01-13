@@ -1,0 +1,5 @@
+<view>
+  <view wx:if="{{ goods_detail }}">
+    {{ goods_detail.name }}, {{ goods_detail.price }}, {{ goods_detail.desc }}
+  </view>
+</view>
