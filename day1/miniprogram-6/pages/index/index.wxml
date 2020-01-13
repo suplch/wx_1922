@@ -1,0 +1,22 @@
+<!--index.wxml-->
+<view class="container">
+ hello world
+ <text> {{ welcome }}, {{ item }} </text>
+
+  <view wx:key="index" wx:for="{{ students }}">
+    {{ item.name }}, {{ item.age }}
+  </view>
+  <text>-----------</text>
+  <view wx:key="no" wx:for="{{ students }}" wx:for-item="stu" wx:for-index="no">
+    {{ no }}, {{ stu.name }}, {{ stu.age }}
+  </view>
+  <button bindtap="showInfo">切换</button>
+  <view wx:if="{{ show }}">
+    显示 信息 if
+  </view>
+    <view hidden="{{ !show }}">
+      显示 信息 hidden
+    </view>
+  <button bindtap="gologs">跳转到 logs</button>
+  <checkbox checked="{{ show }}"></checkbox>
+</view>
