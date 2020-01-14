@@ -1,0 +1,31 @@
+{
+  "pages": [
+    "pages/movies/movies",
+    "pages/cinema/cinema",
+    "pages/center/center"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#e54847",
+    "navigationBarTitleText": "猫眼电影",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/movies/movies",
+        "text": "电影"
+      },
+      {
+        "pagePath": "pages/cinema/cinema",
+        "text": "影院"
+      },
+      {
+        "pagePath": "pages/center/center",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

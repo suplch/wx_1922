@@ -1,0 +1,42 @@
+<view class="root">
+  <view class="head">
+    <view class="left"></view>
+    <view class="center">
+      <view 
+        class="{{item.id === currentType ? 'sel': ''}}"
+        wx:key="id" 
+        wx:for="{{types}}"
+        bindtap="selType" data-typeid="{{item.id}}">
+        <text>{{item.text}}</text>
+      </view>
+    </view>
+    <view class="right"></view>
+  </view>
+  <view class="list">
+    <scroll-view 
+      scroll-y="{{true}}" 
+      class="zzry" 
+      bindscrolltolower="reachBottom"
+      wx:if="{{ currentType === 'zzry' }}">
+      <view>
+        <view class="movie-item" wx:key="id" wx:for="{{movie_list}}" wx:for-item="movie">
+          <view class="img">
+            <image src="{{movie.img}}"  />
+          </view>
+          <view class="info">
+            <view>{{movie.nm}}</view>
+            <view>关注评 {{movie.sc}}</view>
+            <view>主演: {{movie.star}}</view>
+            <view>{{movie.showInfo}}</view>
+          </view>
+          <view class="buy">
+            <button size="mini" type="warn">购票</button>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    <view wx:else>
+      即将上映
+    </view>
+  </view>
+</view>

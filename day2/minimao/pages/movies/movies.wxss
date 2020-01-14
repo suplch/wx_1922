@@ -1,0 +1,63 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.root > .head {
+  display: flex;
+  height: 88rpx;
+}
+
+.root > .head > .left {
+  width: 124rpx
+}
+
+.root > .head > .center {
+  display: flex;
+  flex: 1
+}
+
+.root > .head > .center > view {
+  flex: 1;
+  text-align: center;
+}
+
+.root > .head > .center > view.sel {
+  color: red;
+  border-bottom: 4rpx solid red;
+}
+
+.root > .head > .right {
+  width: 90rpx
+}
+.root > .list {
+  display: flex;
+  flex: 1
+}
+
+.root > .list > .zzry {
+  height: 900rpx;
+}
+
+.root > .list > .zzry .movie-item {
+  height: 228rpx;
+  display: flex;
+}
+
+.root > .list > .zzry .movie-item > .img {
+  width: 138rpx
+}
+
+.root > .list > .zzry .movie-item > .info {
+  flex: 1;
+}
+
+.root > .list > .zzry .movie-item > .buy {
+  width: 120rpx;
+}
+
+.root > .list > .zzry .movie-item image {
+  width: 128rpx;
+  height: 180rpx
+}
