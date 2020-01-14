@@ -20,4 +20,5 @@
   <button bindtap="gologs">跳转到 logs</button>
   <checkbox checked="{{ show }}"></checkbox>
   <navigator url="../goods/goods">跳转到商品列表</navigator>
+  <button catchtap="gotodos">任务列表</button>
 </view>

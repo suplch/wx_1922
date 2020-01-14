@@ -1,0 +1,12 @@
+/* pages/todos/todos.wxss */
+.add_task {
+  display: flex
+}
+.item {
+  height: 80rpx;
+  display: flex;
+}
+
+.item.selected {
+  color: lightgray
+}

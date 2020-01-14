@@ -1,0 +1,22 @@
+<view>
+  <view class="add_task">
+    <input bindinput="changeNewTask" value="{{newtask}}" /> <button catchtap="addTask">添加</button>
+  </view>
+  <view>
+    <view 
+      class="item {{ todo.done ? 'selected': '' }}"
+      catchtap="checkTodo" 
+      data-todo="{{ todo }}"
+      wx:for="{{ todo_list }}" 
+      wx:for-item="todo" 
+      wx:for-index="no">
+
+        <icon type="success" color="{{ todo.done ? 'green': 'yellow' }}" />
+        <text>{{todo.task}}</text> <text>{{todo.done}}</text>
+
+        <button catchtap="delTodo" data-todo="{{ todo }}">删除</button>
+    </view>
+  </view>
+  <text>一共{{ todo_list.length }}条任务</text>
+  <text>已经完成 {{ doneCount }} 条任务  </text>
+</view>

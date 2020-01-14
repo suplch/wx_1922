@@ -22,8 +22,15 @@ Page({
     })
   },
   gologs() {
+    // 跳转到指定页面, 还可以 点击后退 按钮返回
     wx.navigateTo({
       url: '../logs/logs',
+    })
+  },
+  gotodos() {
+    // 将当前页面替换, 不能再返回了
+    wx.redirectTo({
+      url: '../todos/todos',
     })
   }
 })

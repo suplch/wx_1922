@@ -14,6 +14,17 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+function culDoneCount(todo_list) {
+  let count = 0
+  todo_list.forEach((todo) => {
+    if (todo.done) {
+      count++;
+    }
+  });
+  return count;
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  culDoneCount
 }
