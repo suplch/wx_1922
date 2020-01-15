@@ -1,8 +1,9 @@
 // pages/movies/movies.js
-const { getHotMovies, getMoreHot } = require('../../utils/service.js');
+const { getHotMovies, getMoreHot, mostExpected } = require('../../utils/service.js');
 const { handleImgUrl } = require('../../utils/util.js')
 
 let loadingMore = false;
+let loadingComing = false;
 
 Page({
 
@@ -18,7 +19,10 @@ Page({
     pageNo: 0,
     pageSize: 12,
     movieIds: [],
-    movie_list: []
+    movie_list: [],
+    coming: [],
+    comingPageNo: 0,
+    comingPageSize: 10
   },
 
   test() {
@@ -31,6 +35,38 @@ Page({
       currentType: typeid
     })
 
+    if (typeid === 'jjsy') {
+      let offset = this.data.comingPageNo * this.data.comingPageSize;
+      mostExpected(offset, this.data.comingPageSize, (data) => {
+
+        for (let item of data.coming) {
+          item.img = handleImgUrl(item.img, 170, 230)
+        }
+
+        this.setData({
+          coming: data.coming
+        })
+      })
+    }
+  },
+
+  reachRight() {
+    if (loadingComing) {
+      return;
+    }
+
+    loadingComing = true;
+    this.data.comingPageNo++;
+    let offset = this.data.comingPageNo * this.data.comingPageSize;
+    mostExpected(offset, this.data.comingPageSize, (data) => {
+      loadingComing = false;
+      for (let item of data.coming) {
+        item.img = handleImgUrl(item.img, 170, 230)
+      }
+      this.setData({
+        coming: [...this.data.coming, ...data.coming]
+      })
+    });
   },
 
   /**
@@ -52,15 +88,15 @@ Page({
 
   reachBottom() {
     console.log('bottom');
-    if (loadingMore) {
+    if (loadingMore) { // ****
       return;
     }
-    loadingMore = true;
+    loadingMore = true; // ***
     this.data.pageNo++;
     let ids = this.data.movieIds.slice(this.data.pageNo * 12, this.data.pageNo * 12 + 12)
 
     getMoreHot(ids, (data) => {
-      loadingMore = false;
+      loadingMore = false; //**
 
       for (let movie of data.coming) {
         movie.img = handleImgUrl(movie.img, 128, 180)
@@ -70,6 +106,12 @@ Page({
         movie_list: [...this.data.movie_list, ...data.coming]
       })
       console.log(data)
+    })
+  },
+
+  buyMovie(event) {
+    wx.navigateTo({
+      url: '../movie/detail?mid=' + event.currentTarget.dataset.mid
     })
   },
 

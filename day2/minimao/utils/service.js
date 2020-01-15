@@ -21,7 +21,27 @@ function getMoreHot(ids, callback) {
   })
 }
 
+function getMovieDetail(mid, callback) {
+  wx.request({
+    url: 'http://m.maoyan.com/ajax/detailmovie?movieId=' + mid + '&optimus_uuid=3CB6E28022CD11EAB1493B40EFD466378DF35103B9504A45A181AC2194395ABF&optimus_risk_level=71&optimus_code=10',
+    success(res) {
+      callback(res.data)
+    }
+  })
+}
+
+function mostExpected(offset, limit, callback) {
+  wx.request({
+    url: 'http://m.maoyan.com/ajax/mostExpected?ci=1&limit=' + limit + '&offset=' + offset + '&token=&optimus_uuid=3CB6E28022CD11EAB1493B40EFD466378DF35103B9504A45A181AC2194395ABF&optimus_risk_level=71&optimus_code=10',
+    success(res) {
+      callback(res.data)
+    }
+  })
+}
+
 module.exports = {
   getHotMovies,
-  getMoreHot
+  getMoreHot,
+  getMovieDetail,
+  mostExpected
 }

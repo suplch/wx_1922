@@ -30,13 +30,31 @@
             <view>{{movie.showInfo}}</view>
           </view>
           <view class="buy">
-            <button size="mini" type="warn">购票</button>
+            <button bindtap="buyMovie" data-mid="{{movie.id}}" size="mini" type="warn">购票</button>
           </view>
         </view>
       </view>
     </scroll-view>
-    <view wx:else>
-      即将上映
-    </view>
+    <scroll-view 
+      wx:else
+      scroll-y="{{true}}" 
+      class="jjsy">
+        <view class="recent">
+          <scroll-view bindscrolltolower="reachRight" scroll-x="{{true}}" class="list">
+            <view wx:for="{{coming}}" class="coming">
+              <image src="{{item.img}}" />
+              <view>
+                <text>{{ item.nm }}</text>
+              </view>
+              <view>
+                <text>{{ item.comingTitle }}</text>
+              </view>
+            </view>
+          </scroll-view>
+        </view>
+        <view>
+        
+        </view>
+      </scroll-view>
   </view>
 </view>

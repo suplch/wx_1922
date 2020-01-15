@@ -1,0 +1,19 @@
+<view class="root">
+  <view wx:if="{{ code !== 406 }}" class="detail">
+    <view class="img">
+      <image src="{{detailMovie.img}}" />
+    </view>
+    <view class="info">
+    
+    </view>
+    <view class="jump">
+
+    </view>
+  </view>
+  <view wx:else-if="{{code === 406}}">
+    网络不给力, 请稍后重试
+  </view>
+  <view class="cinema_list">
+  
+  </view>
+</view>

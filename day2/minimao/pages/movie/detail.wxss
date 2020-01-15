@@ -1,0 +1,21 @@
+/* pages/movie/detail.wxss */
+.root > .detail {
+  display: flex;
+  height: 376rpx
+}
+
+.root > .detail > .img{
+  width: 240rpx;
+}
+
+.root > .detail > .jump {
+  width: 60rpx;
+}
+
+.root > .detail > .info {
+  flex: 1
+}
+
+.root > .cinema_list {
+  flex: 1
+}
