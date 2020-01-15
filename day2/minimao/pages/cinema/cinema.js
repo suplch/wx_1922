@@ -1,4 +1,7 @@
 // pages/cinema/cinema.js
+const { cinemaList } = require('../../utils/service.js');
+
+const { request } = require('../../utils/req.js')
 Page({
 
   /**
@@ -8,11 +11,34 @@ Page({
 
   },
 
+  // getmaoyanpage() {
+  //   wx.request({
+  //     url: 'http://m.maoyan.com/',
+  //     dataType: 'html',
+  //     success(res) {
+  //       console.log(res)
+  //       console.log(res.header['Set-Cookie'])
+  //       let cookieStr = res.header['Set-Cookie'];
+  //       let cookieList = cookieStr.split(',');
+  //       console.log(cookieList)
+
+  //     },
+  //     fail(err) {
+  //       console.log(err)
+  //     }
+  //   })
+  // },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    request({
+      url: 'http://www.baidu.com',
+      success(res) {
+        console.log(res.data)
+      }
+    })
   },
 
   /**

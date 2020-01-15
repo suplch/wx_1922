@@ -1,2 +1,6 @@
-<!--pages/cinema/cinema.wxml-->
-<text>pages/cinema/cinema.wxml</text>
+<view>
+  <!-- <button bindtap="getmaoyanpage">
+    获取
+  </button> -->
+  
+</view>

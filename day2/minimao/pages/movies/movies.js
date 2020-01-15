@@ -36,13 +36,12 @@ Page({
     })
 
     if (typeid === 'jjsy') {
+      this.data.comingPageNo = 0;
       let offset = this.data.comingPageNo * this.data.comingPageSize;
       mostExpected(offset, this.data.comingPageSize, (data) => {
-
         for (let item of data.coming) {
           item.img = handleImgUrl(item.img, 170, 230)
         }
-
         this.setData({
           coming: data.coming
         })
