@@ -1,1 +1,5 @@
 /* pages/center/center.wxss */
+
+.root > .line1 {
+  display: flex;
+}

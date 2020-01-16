@@ -1,6 +1,6 @@
 <view>
-  <!-- <button bindtap="getmaoyanpage">
+  <button bindtap="getmaoyanpage">
     获取
-  </button> -->
+  </button>
   
 </view>

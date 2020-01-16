@@ -1,2 +1,15 @@
-<!--pages/center/center.wxml-->
-<text>pages/center/center.wxml</text>
+<view class="root">
+  <view class="line1">
+    <input bindinput="changePhone" value="{{ phoneNum }}"  placeholder="请输入手机号" />
+    <button bindtap="sendCode" disabled="{{ disableGetCodeBtn }}">获取验证码</button>
+  </view>
+  <view>
+    <input bindinput="changeCode" value="{{code}}" disabled="{{ disableInputCode }}" placeholder="请输入短信验证码" />
+  </view>
+  <view>
+    <button bindtap="login" disabled="{{ disableLogin }}">登录</button>
+  </view>
+  <view>
+    <button bindtap="getUser">获取用户信息</button>
+  </view>
+</view>
