@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+// 秘钥
 let privateKey = '私钥字符串xxxyyyzzz'
 
 let user = {name: 'zhang', age: 18}

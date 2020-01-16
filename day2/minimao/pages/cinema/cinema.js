@@ -1,27 +1,25 @@
 // pages/cinema/cinema.js
 const { cinemaList } = require('../../utils/service.js');
-
-const { request } = require('../../utils/req.js')
+const { request } = require('../../utils/req.js');
+const { events } = require('../../utils/events.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    cookies: []
   },
 
   getmaoyanpage() {
     wx.request({
       url: 'http://m.maoyan.com/',
       dataType: 'html',
-      success(res) {
+      success: (res) => {
         console.log(res)
-        console.log(res.header['Set-Cookie'])
-        let cookieStr = res.header['Set-Cookie'];
-        let cookieList = cookieStr.split(',');
-        console.log(cookieList)
-
+        this.setData({
+          cookies: res.cookies
+        })
       },
       fail(err) {
         console.log(err)
@@ -39,6 +37,11 @@ Page({
     //     console.log(res.data)
     //   }
     // })
+
+    events.on('loginOK', () => {
+      console.log('loginOK')
+      this.getmaoyanpage();
+    });
   },
 
   /**

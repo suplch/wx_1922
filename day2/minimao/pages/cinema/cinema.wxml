@@ -1,6 +1,10 @@
 <view>
-  <button bindtap="getmaoyanpage">
-    获取
-  </button>
-  
+  <view wx:if="{{ cookies.length > 0 }}">
+    <view wx:for="{{ cookies }}" wx:for-item="cookie">
+      {{ cookie }}
+    </view>
+  </view>
+  <view wx:else>
+    无数据
+  </view>
 </view>

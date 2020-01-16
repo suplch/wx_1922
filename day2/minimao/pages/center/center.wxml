@@ -12,4 +12,6 @@
   <view>
     <button bindtap="getUser">获取用户信息</button>
   </view>
+  <button bindtap="show">show</button>
+  <button bindtap="scan">扫码</button>
 </view>

@@ -1,4 +1,6 @@
 // pages/center/center.js
+const { events} = require('../../utils/events.js');
+
 const phoneReg = /^1[3456789]\d{9}$/;
 
 Page({
@@ -16,9 +18,7 @@ Page({
 
   changePhone(event) {
     let phone = event.detail.value;
-
     let dis = !phoneReg.test(phone);
-
     this.setData({
       phoneNum: phone,
       disableGetCodeBtn: dis,
@@ -59,7 +59,7 @@ Page({
         if (res.data.code === 100) {
 
           wx.setStorageSync('token', res.data.token)
-
+          events.emit('loginOK');
         }
       }
     });
@@ -71,6 +71,53 @@ Page({
       url: 'http://localhost:3000/getuserinfo?token=' + token,
       success(res) {
         console.log(res.data);
+      }
+    })
+  },
+
+  show() {
+    // wx.showToast({
+    //   title: '支付成功',
+    //   duration: 3000,
+    //   mask: true
+    // })
+
+    // wx.showModal({
+    //   title: '消息',
+    //   content: '消息...',
+    // })
+    // wx.showLoading({
+    //   title: '加载中....',
+    // })
+
+    // setTimeout(() => {
+    //   wx.hideLoading()
+    // }, 1000)
+
+    wx.showActionSheet({
+      itemList:[
+        'java', 'node', 'css'
+      ],
+      success(res) {
+        console.log(res)
+      }
+    })
+  },
+
+  scan() {
+    // wx.scanCode({
+    //   onlyFromCamera: true,
+    //   success(res) {
+    //     console.log(res)
+    //     wx.showModal({
+    //       title: res.result,
+    //       content: '',
+    //     })
+    //   }
+    // })
+    wx.vibrateLong({
+      success() {
+        
       }
     })
   },
