@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        Generator 函数
+
+        <script>
+            // 给函数名之前 加一个 * 好, 那么函数将变为 generator 函数
+            function * hello() {
+    //  --- >>>> 代码停留位置, 相当于一个虚构的断点
+                console.log('hello world')
+                yield '你好'
+    // ---->>>>> 代码停留位置, 相当于一个虚构的断点
+                console.log('😃')
+                yield '再见'
+    // ---->>>>> 代码停留位置, 相当于一个虚构的断点
+                console.log('good bye')
+                return '来年见'
+            }
+
+            const iter =  hello();
+
+            // console.log(iter.next());
+            // console.log(iter.next());
+            // console.log(iter.next());
+            
+        </script>
+    </body>
+</html>

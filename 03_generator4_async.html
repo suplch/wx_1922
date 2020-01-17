@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        Generator 函数 异步处理
+
+        <script>
+
+            function wait (second, text) {
+                return new Promise(function(resolve, reject) {
+                    setTimeout(function() {
+                        resolve(text);
+                    }, second * 1000)
+                });
+            }
+
+        //     async function hello222() {
+        // // ---->>> 虚构的断点
+        //         console.log('hello world');
+        //         let p1 = wait(3, '你好');
+        //         let v1 = await p1;
+        //         console.log(v1)
+        // // ---->>> 虚构的断点
+        //         let p2 = wait(4, '再见');
+        //         let v2 = await p2;
+        //         console.log(v2)
+        // // ---->>> 虚构的断点
+        //         console.log('good bye');
+        //         return '结束了' 
+        //     }
+        //     hello222();
+
+
+            function * hello() {
+        // ---->>> 虚构的断点
+                console.log('hello world');
+                let p1 = wait(3, '你好');
+                let v1 = /* 虚构的断点  */ yield p1;
+                console.log(v1)
+                let p2 = wait(4, '再见');
+                let v2 = /* 虚构的断点  */ yield p2;
+                console.log(v2)
+                console.log('good bye');
+                return '结束了' 
+            }
+
+            const iter = hello();
+
+            let item = iter.next();
+            console.log(item);
+            if (!item.done) {
+                item.value.then(function(result) {
+                    item = iter.next(result);
+                    console.log(item);
+                    if (!item.done) {
+                        item.value.then(function(result) {
+                            item = iter.next(result);
+                            console.log(item);
+                        })
+                    }
+                });
+            }
+            
+
+        </script>
+    </body>
+</html>
