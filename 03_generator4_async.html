@@ -19,12 +19,10 @@
         //     async function hello222() {
         // // ---->>> 虚构的断点
         //         console.log('hello world');
-        //         let p1 = wait(3, '你好');
-        //         let v1 = await p1;
+        //         let v1 = await wait(3, '你好');
         //         console.log(v1)
         // // ---->>> 虚构的断点
-        //         let p2 = wait(4, '再见');
-        //         let v2 = await p2;
+        //         let v2 = await wait(4, '再见');
         //         console.log(v2)
         // // ---->>> 虚构的断点
         //         console.log('good bye');
@@ -36,32 +34,49 @@
             function * hello() {
         // ---->>> 虚构的断点
                 console.log('hello world');
-                let p1 = wait(3, '你好');
-                let v1 = /* 虚构的断点  */ yield p1;
+                
+                let v1 = /* 虚构的断点  */ yield wait(3, '你好');
                 console.log(v1)
-                let p2 = wait(4, '再见');
-                let v2 = /* 虚构的断点  */ yield p2;
+                let v2 = /* 虚构的断点  */ yield wait(4, '再见');
                 console.log(v2)
                 console.log('good bye');
                 return '结束了' 
             }
 
-            const iter = hello();
+            autoRun(hello)
 
-            let item = iter.next();
-            console.log(item);
-            if (!item.done) {
-                item.value.then(function(result) {
-                    item = iter.next(result);
-                    console.log(item);
+
+
+
+            function autoRun(genFn) {
+                let iter = genFn();
+                (function run(result) {
+                    let item = iter.next(result);
                     if (!item.done) {
                         item.value.then(function(result) {
-                            item = iter.next(result);
-                            console.log(item);
-                        })
+                            run(result);
+                        });
                     }
-                });
+                })()
             }
+            
+
+
+            // let item = iter.next();
+            // console.log(item);
+            // if (!item.done) {
+            //     item.value.then(function(result) {
+            //         item = iter.next(result);
+            //         console.log(item);
+            //         if (!item.done) {
+            //             item.value.then(function(result) {
+            //                 item = iter.next(result);
+            //                 console.log(item);
+            //             })
+            //         }
+            //     });
+            // }
+            
             
 
         </script>
